@@ -1,80 +1,25 @@
 # README
 
-## **What This Project Does**
+## **Overview**
 
-This project provides a simple tool to calculate the distance and travel time between two locations using the Google Maps Distance Matrix API. It retrieves real-time traffic data and returns both the distance and estimated travel time considering current traffic conditions. This is particularly useful for optimizing travel plans, estimating delivery times, or building location-based services.
-
----
-
-## **Why This Project is Useful**
-
-1. **Real-Time Traffic Insights**  
-   - Access up-to-date travel times based on live traffic data.
-
-2. **Easy Integration**  
-   - Simple setup and minimal coding required to fetch reliable data from the Google Maps API.
-
-3. **Time-Saving**  
-   - Quickly calculate distances and travel times without manual input or complex tools.
-
-4. **Versatility**  
-   - Useful for travelers, logistics planning, and developers building location-based services.
+This project implements Dijkstra's algorithm to find the shortest distances from a starting node to all other nodes in a graph. The algorithm is designed to work with weighted graphs, where each edge has a cost associated with it. This implementation uses a priority queue (heap) to ensure efficient computation of the shortest paths.
 
 ---
 
-## **How to Get Started**
+## **How It Works**
 
-1. **Set Up Your Environment**  
-   - Install Python 3.7 or higher on your system.  
-   - Install the required library using:  
-     ```bash
-     pip install requests
-     ```
+1. **Graph Representation**:  
+   - The graph is represented as a dictionary, where each key is a node, and the value is another dictionary containing neighboring nodes and their respective edge weights.
 
-2. **Get a Google Maps API Key**  
-   - Sign up for a Google Cloud account and enable the Distance Matrix API.  
-   - Generate an API key from the Google Cloud Console.
+2. **Priority Queue**:  
+   - A priority queue (using Python's `heapq` module) is used to store nodes based on their current shortest distance.
 
-3. **Configure the Script**  
-   - Open the script and replace `YOUR_API_KEY` with your API key:  
-     ```python
-     API_KEY = 'YOUR_API_KEY'
-     ```
-   - Set your desired origin and destination:  
-     ```python
-     origin = 'Tokyo Station'
-     destination = 'Narita Airport'
-     ```
+3. **Algorithm Steps**:  
+   - Initialize distances to all nodes as infinity (`float('inf')`), except for the starting node, which is set to 0.
+   - Extract the node with the smallest distance from the priority queue.
+   - Update the distances to its neighboring nodes if a shorter path is found.
+   - Repeat until all nodes have been processed.
 
-4. **Run the Script**  
-   - Execute the script in your terminal:  
-     ```bash
-     python script_name.py
-     ```
-   - Replace `script_name.py` with the name of your script file.
+4. **Output**:  
+   - The algorithm returns a dictionary of the shortest distances from the start node to all other nodes.
 
----
-
-## **Where to Get Help**
-
-If you encounter issues or need further assistance, consider the following resources:  
-- **Google Maps API Documentation**: [Distance Matrix API Docs](https://developers.google.com/maps/documentation/distance-matrix)  
-- **Python Documentation**: [Python Official Docs](https://docs.python.org/3/)  
-- **Community Forums**:  
-  - [Stack Overflow](https://stackoverflow.com/) (Search for similar questions or post your own)  
-  - [Reddit: Learn Python](https://www.reddit.com/r/learnpython/)
-
----
-
-## **Project Maintainer and Contributors**
-
-**Maintainer:**  
-- Name: [Your Name]  
-- Contact: [Your Email or GitHub Profile]  
-
-**Contributors:**  
-We welcome contributions to improve this project. If you’d like to contribute, feel free to submit a pull request or open an issue on GitHub.
-
----
-
-Thank you for using this project! Feel free to reach out if you have any feedback or suggestions.
